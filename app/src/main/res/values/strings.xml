@@ -9,4 +9,7 @@
     <string name="searching_in_wiki">Поищите термин в википедии</string>
     <string name="app_bar_menu_send">send</string>
     <string name="app_bar_menu_download">downlaod</string>
+    <string name="today">today</string>
+    <string name="yesterday">yesterday</string>
+    <string name="tdby">tdby</string>
 </resources>

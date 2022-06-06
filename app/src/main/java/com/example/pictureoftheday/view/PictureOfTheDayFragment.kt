@@ -14,6 +14,7 @@ import com.example.pictureoftheday.BuildConfig
 import com.example.pictureoftheday.MainActivity
 import com.example.pictureoftheday.R
 import com.example.pictureoftheday.databinding.FragmentPictureOfTheDayBinding
+import com.example.pictureoftheday.settings.SettingsFragment
 import com.example.pictureoftheday.viewmodel.PictureOfTheDayAppState
 import com.example.pictureoftheday.viewmodel.PictureOfTheDayViewModel
 import com.google.android.material.bottomappbar.BottomAppBar
@@ -62,6 +63,9 @@ class PictureOfTheDayFragment : Fragment() {
             }
             R.id.app_bar_settings -> {
                 Log.d("@@@", "app_bar_settings")
+                requireActivity().supportFragmentManager.beginTransaction()
+                    .replace(R.id.container, SettingsFragment.newInstance()).commit()
+                // TODO HW addToBAckstack
             }
             android.R.id.home -> {
                 BottomNavigationDrawerFragment.newInstance()

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="colorPrimaryTheme" format="reference"/>
+    <attr name="colorSecondaryTheme" format="reference"/>
+    <attr name="colorTertiaryTheme" format="reference"/>
+    <attr name="myTabLayout" format="reference"/>
+</resources>
