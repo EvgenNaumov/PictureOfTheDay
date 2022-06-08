@@ -28,6 +28,15 @@
         <item name="android:letterSpacing">0.2</item>
     </style>
 
+    <style name="TextBtnRadioSetting" parent="Widget.MaterialComponents.CompoundButton.RadioButton">
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="layoutTextChangeTheme" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
+        <item name="android:textSize">12sp</item>
+    </style>
+
     <!--  FIXME 10%==50%  -->
     <style name="MySmallShape" parent="ShapeAppearance.MaterialComponents.SmallComponent">
         <item name="cornerSize">10%</item>

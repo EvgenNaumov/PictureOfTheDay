@@ -1,10 +1,14 @@
 package com.example.pictureoftheday.view
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.net.Uri
 import android.os.Bundle
+import android.security.keystore.KeyNotYetValidException
 import android.util.Log
 import android.view.*
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -22,12 +26,16 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.chip.Chip
 import com.google.android.material.snackbar.Snackbar
 
+
 class PictureOfTheDayFragment : Fragment() {
 
     var isMain = true
     private var _binding: FragmentPictureOfTheDayBinding? = null
     private val binding: FragmentPictureOfTheDayBinding
         get() = _binding!!
+
+    private val KEY_SP = "sp"
+    private val KEY_CURRENT_THEME_LOCAL = "current_theme_local"
 
     private var callBackOnErrorLoad = object : CallbackFragment {
         override fun onError(messageError: String) {
@@ -41,6 +49,7 @@ class PictureOfTheDayFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         // Inflate the layout for this fragment
         _binding = FragmentPictureOfTheDayBinding.inflate(inflater, container, false)
         return binding.root
@@ -63,8 +72,12 @@ class PictureOfTheDayFragment : Fragment() {
             }
             R.id.app_bar_settings -> {
                 Log.d("@@@", "app_bar_settings")
-                requireActivity().supportFragmentManager.beginTransaction()
-                    .replace(R.id.container, SettingsFragment.newInstance()).commit()
+                requireActivity().supportFragmentManager.beginTransaction().replace(R.id.container, SettingsFragment.newInstance()) .apply {
+                        this.commit()
+                        this.addToBackStack("")
+                    }
+
+
                 // TODO HW addToBAckstack
             }
             android.R.id.home -> {
@@ -151,10 +164,16 @@ class PictureOfTheDayFragment : Fragment() {
 
         binding.chipGroup.setOnCheckedChangeListener { group, position ->
             /* TODO HW*/
-             when(position){
-                1->{viewModel.sendRequestToday(callBackOnErrorLoad)}
-                2->{viewModel.sendRequestYT(callBackOnErrorLoad)}
-                3->{viewModel.sendRequestTDBY(callBackOnErrorLoad)}
+            when (position) {
+                1 -> {
+                    viewModel.sendRequestToday(callBackOnErrorLoad)
+                }
+                2 -> {
+                    viewModel.sendRequestYT(callBackOnErrorLoad)
+                }
+                3 -> {
+                    viewModel.sendRequestTDBY(callBackOnErrorLoad)
+                }
             }
 
 /*

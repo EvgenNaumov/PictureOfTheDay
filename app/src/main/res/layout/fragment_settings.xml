@@ -45,7 +45,7 @@
             android:tag="one"
             android:text="Меню 1" />
 
-        com.example.pictureoftheday.utils.MyTabItem
+        <com.example.pictureoftheday.utils.MyTabItem
             android:layout_width="wrap_content"
             android:layout_height="?actionBarSize"
             android:tag="two"
@@ -58,11 +58,57 @@
             android:text="Меню 3" />
     </com.example.pictureoftheday.utils.MyTabLayout>
 
+    <RadioGroup
+        android:id="@+id/radio_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/color_gray"
+        android:orientation="horizontal">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/change_theme"
+            android:clickable="false">
+        </com.google.android.material.textfield.TextInputEditText>
+
+        <com.google.android.material.radiobutton.MaterialRadioButton
+            android:id="@+id/button_theme_one"
+            android:text="@string/theme_one"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:padding="4dp">
+
+        </com.google.android.material.radiobutton.MaterialRadioButton>
+
+        <com.google.android.material.radiobutton.MaterialRadioButton
+            android:id="@+id/button_theme_two"
+            android:text="@string/theme_two"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:padding="4dp">
+        </com.google.android.material.radiobutton.MaterialRadioButton>
+
+        <com.google.android.material.radiobutton.MaterialRadioButton
+            android:id="@+id/button_theme_three"
+            android:text="@string/theme_three"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:padding="4dp">
+
+        </com.google.android.material.radiobutton.MaterialRadioButton>
+    </RadioGroup>
+
+
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardView"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_margin="20dp"
         app:cardBackgroundColor="#FF424242" />
+
 
 </LinearLayout>

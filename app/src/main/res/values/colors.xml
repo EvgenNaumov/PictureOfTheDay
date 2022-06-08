@@ -29,5 +29,25 @@
 
     <color name="ripple_color">#FFD405</color>
 
+<!--    палитра темы 1-->
+    <color name="theme1_red_purple">#893245</color>
+    <color name="theme1_moderate_pink">#E0AEB6</color>
+    <color name="theme1_smoky_white">#F5F8F7</color>
+    <color name="theme1_eggplant">#6B404B</color>
+    <color name="theme1_pink_quartz">#B099A4</color>
+
+<!--   палитра темы 2 -->
+    <color name="theme2_mint">#476C5F</color>
+    <color name="theme2_orange">#E8764F</color>
+    <color name="theme2_pink">#FA7173</color>
+    <color name="theme2_light_green">#77A184</color>
+    <color name="theme2_marsal">#9B4653</color>
+
+    <!--   палитра темы 3 -->
+    <color name="theme3_purple">#E777CD</color>
+    <color name="theme3_green">#02DA75</color>
+    <color name="theme3_blue">#01C2EB</color>
+    <color name="theme3_mandarin">#EE9105</color>
+    <color name="theme3_corn">#ECEF56</color>
 
 </resources>

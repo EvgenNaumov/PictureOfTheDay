@@ -32,9 +32,11 @@
     </style>
 
     <style name="Theme.Blue" parent="Theme.PictureOfTheDay">
-        <item name="colorPrimaryTheme">@color/blue</item>
+        <item name="colorPrimaryTheme">@color/theme1_moderate_pink</item>
         <item name="colorSecondaryTheme">@color/blue_200</item>
         <item name="colorTertiaryTheme">@color/blue_500</item>
+        <item name="android:textAppearance">@style/TextBtnRadioSetting</item>
+        <item name="android:textSize">@style/TextBtnRadioSetting</item>
     </style>
 
     <style name="Theme.ripple_color" parent="Theme.PictureOfTheDay">

@@ -12,4 +12,8 @@
     <string name="today">today</string>
     <string name="yesterday">yesterday</string>
     <string name="tdby">tdby</string>
+    <string name="theme_one">тема 1</string>
+    <string name="theme_two">тема 2</string>
+    <string name="theme_three">тема 3</string>
+    <string name="change_theme">Выбор темы</string>
 </resources>
