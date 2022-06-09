@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
             ThemeOne -> R.style.Theme_Blue
             ThemeSecond -> R.style.Theme_ripple_color
             ThemeThree -> R.style.Theme_green
-            else -> R.style.Theme_PictureOfTheDay
+            else -> R.style.Theme_Blue
         }
     }
 

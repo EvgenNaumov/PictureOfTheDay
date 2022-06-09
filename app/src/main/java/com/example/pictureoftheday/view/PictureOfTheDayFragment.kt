@@ -24,15 +24,33 @@ import com.example.pictureoftheday.viewmodel.PictureOfTheDayViewModel
 import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.chip.Chip
+import com.google.android.material.chip.ChipGroup
 import com.google.android.material.snackbar.Snackbar
 
 
-class PictureOfTheDayFragment : Fragment() {
+class PictureOfTheDayFragment : Fragment(), ChipGroup.OnCheckedStateChangeListener {
 
     var isMain = true
     private var _binding: FragmentPictureOfTheDayBinding? = null
     private val binding: FragmentPictureOfTheDayBinding
         get() = _binding!!
+
+    override fun onCheckedChanged(group: ChipGroup, checkedIds: MutableList<Int>) {
+        Log.d("@@@", "onClick: что то кликнули")
+/*
+        when (group.) {
+            1 -> {
+                viewModel.sendRequestToday(callBackOnErrorLoad)
+            }
+            2 -> {
+                viewModel.sendRequestYT(callBackOnErrorLoad)
+            }
+            3 -> {
+                viewModel.sendRequestTDBY(callBackOnErrorLoad)
+            }
+        }
+*/
+    }
 
     private val KEY_SP = "sp"
     private val KEY_CURRENT_THEME_LOCAL = "current_theme_local"
@@ -160,7 +178,6 @@ class PictureOfTheDayFragment : Fragment() {
             }
             isMain = !isMain
         }
-
 
         binding.chipGroup.setOnCheckedChangeListener { group, position ->
             /* TODO HW*/

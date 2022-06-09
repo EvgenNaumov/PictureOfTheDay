@@ -15,11 +15,11 @@
 
         <item name="textInputStyle">@style/MyStyle</item>
         <item name="floatingActionButtonStyle">@style/MyStyleFloatingActionButton</item>
-        <item name="chipStyle">@style/MyChipStyle</item>
+        <item name="chipStyle">@style/BaseChipStyle</item>
     </style>
 
 
-    <style name="MyChipStyle" parent="Widget.MaterialComponents.Chip.Choice">
+    <style name="BaseChipStyle" parent="Widget.MaterialComponents.Chip.Choice">
 
     </style>
     <style name="MyStyleFloatingActionButton" parent="Widget.MaterialComponents.FloatingActionButton">

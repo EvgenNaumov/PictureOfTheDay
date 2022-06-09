@@ -8,43 +8,62 @@
         <item name="colorPrimaryContainer">@color/red_100</item>
         <item name="colorOnPrimaryContainer">@color/red_900</item>
         <item name="colorPrimaryInverse">@color/red_200</item>
+
         <item name="colorSecondary">?colorSecondaryTheme</item>
         <item name="colorOnSecondary">@color/white</item>
         <item name="colorSecondaryContainer">@color/red_100</item>
         <item name="colorOnSecondaryContainer">@color/red_900</item>
+
         <item name="colorTertiary">?colorTertiaryTheme</item>
         <item name="colorOnTertiary">@color/white</item>
         <item name="colorTertiaryContainer">@color/red_100</item>
         <item name="colorOnTertiaryContainer">@color/red_900</item>
+
+        <item name="colorAccent">?colorAccentTheme</item>
 
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="21">?attr/colorPrimary</item>
         <!-- Customize your theme here. -->
         <item name="textInputStyle">@style/MyStyle</item>
         <item name="floatingActionButtonStyle">@style/MyStyleFloatingActionButton</item>
-        <item name="chipStyle">@style/MyChipStyle</item>
+        <item name="chipStyle">@style/BaseChipStyle</item>
 
-        <item name="tabStyle">@style/MyTabStyle</item>
+        <item name="tabStyle">@style/BaseTabStyle</item>
 
-        <item name="textAppearanceBody2">@style/MyTextAppearance</item>
-        <item name="shapeAppearanceSmallComponent">@style/MySmallShape</item>
+        <item name="textAppearanceBody2">@style/BaseTextAppearance</item>
+        <item name="shapeAppearanceSmallComponent">@style/BaseSmallShape</item>
         <item name="shapeAppearanceMediumComponent">@style/MyMediumShape</item>
     </style>
 
     <style name="Theme.Blue" parent="Theme.PictureOfTheDay">
-        <item name="colorPrimaryTheme">@color/theme1_moderate_pink</item>
-        <item name="colorSecondaryTheme">@color/blue_200</item>
-        <item name="colorTertiaryTheme">@color/blue_500</item>
-        <item name="android:textAppearance">@style/TextBtnRadioSetting</item>
-        <item name="android:textSize">@style/TextBtnRadioSetting</item>
+        <item name="colorPrimaryTheme">@color/theme1_red_purple</item>
+        <item name="colorSecondaryTheme">@color/theme1_moderate_pink</item>
+        <item name="colorTertiaryTheme">@color/theme1_pink_quartz</item>
+        <item name="colorAccentTheme">@color/theme1_eggplant</item>
+        <item name="android:statusBarColor">@color/theme1_eggplant</item>
+
+        <item name="textAppearanceBody2">@style/TextAppearanceThemeOne</item>
+        <item name="chipStyleTheme">@style/ThemeOneChipStyle</item>
     </style>
 
     <style name="Theme.ripple_color" parent="Theme.PictureOfTheDay">
-        <item name="colorPrimaryTheme">@color/ripple_color</item>
+        <item name="colorPrimaryTheme">@color/theme2_orange</item>
+        <item name="colorSecondaryTheme">@color/theme2_marsal</item>
+        <item name="colorTertiaryTheme">@color/theme2_mint</item>
+        <item name="colorAccentTheme">@color/theme2_pink</item>
+
+        <item name="textAppearanceBody2">@style/TextAppearanceThemeTwo</item>
+        <item name="chipStyleTheme">@style/ThemeTwoChipStyle</item>
     </style>
 
     <style name="Theme.green" parent="Theme.PictureOfTheDay">
-        <item name="colorPrimaryTheme">@color/green</item>
+        <item name="colorPrimaryTheme">@color/theme3_blue</item>
+        <item name="colorSecondaryTheme">@color/theme3_corn</item>
+        <item name="colorTertiaryTheme">@color/theme3_purple</item>
+        <item name="colorAccentTheme">@color/theme3_green</item>
+
+        <item name="textAppearanceBody2">@style/TextAppearanceThemeThree</item>
+        <item name="chipStyleTheme">@style/ThemeThreeChipStyle</item>
     </style>
 
 </resources>

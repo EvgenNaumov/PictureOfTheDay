@@ -6,10 +6,7 @@ import android.util.Log
 import android.view.*
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.example.pictureoftheday.KEY_CURRENT_THEME
-import com.example.pictureoftheday.KEY_SP
-import com.example.pictureoftheday.MainActivity
-import com.example.pictureoftheday.R
+import com.example.pictureoftheday.*
 import com.example.pictureoftheday.databinding.FragmentSettingsBinding
 import com.example.pictureoftheday.view.BottomNavigationDrawerFragment
 import com.google.android.material.tabs.TabLayout
@@ -88,15 +85,15 @@ class SettingsFragment : Fragment(), View.OnClickListener {
     override fun onClick(v: View) {
         when(v.id){
             R.id.button_theme_one->{
-              parentActivity.setCurrenyTheme(R.id.button_theme_one)
+              parentActivity.setCurrenyTheme(ThemeOne)
                 parentActivity.recreate()
             }
             R.id.button_theme_two->{
-                parentActivity.setCurrenyTheme(R.id.button_theme_two)
+                parentActivity.setCurrenyTheme(ThemeSecond)
                 parentActivity.recreate()
             }
-            R.id.button_theme_two->{
-                parentActivity.setCurrenyTheme(R.id.button_theme_three)
+            R.id.button_theme_three->{
+                parentActivity.setCurrenyTheme(ThemeThree)
                 parentActivity.recreate()
             }
 

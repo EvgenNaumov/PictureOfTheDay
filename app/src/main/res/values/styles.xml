@@ -1,10 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="MyChipStyle" parent="Widget.MaterialComponents.Chip.Choice">
 
+    <!--    TextAppearance.MaterialComponents.Body2-->
+    <style name="BaseTextAppearance" parent="TextAppearance.MaterialComponents.Body2">
+        <item name="fontFamily">@font/amethysta</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:letterSpacing">0.2</item>
     </style>
 
-    <style name="MyStyleFloatingActionButton" parent="Widget.MaterialComponents.FloatingActionButton">
+    <style name="TextAppearanceThemeOne" parent="BaseTextAppearance">
+        <item name="fontFamily">@font/averia_libre_light</item>
+        <item name="android:textStyle">italic</item>
+    </style>
+
+    <style name="TextAppearanceThemeTwo" parent="TextAppearance.MaterialComponents.Body2">
+        <item name="fontFamily">@font/averia_libre_light</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextAppearanceThemeThree" parent="TextAppearance.MaterialComponents.Body2">
+        <item name="fontFamily">@font/brawler</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextAppearanceSmall" parent="TextAppearance.MaterialComponents.Body2">
+        <item name="fontFamily">@font/brawler</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">10dp</item>
+    </style>
+
+
+    <!--    TextAppearance.MaterialComponents.Body2-->
+
+
+    <!--    Widget.MaterialComponents.CompoundButton.RadioButton -->
+
+    <style name="TextBtnRadioSetting" parent="Widget.MaterialComponents.CompoundButton.RadioButton">
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <!--    Widget.MaterialComponents.CompoundButton.RadioButton -->
+
+
+    <!--  Widget.MaterialComponents.Chip.*  -->
+    <style name="BaseThemeOneChipStyle" parent="Widget.MaterialComponents.Chip.Entry">
+        <item name="shapeAppearance">@style/ShapeAppearanceChip.App.SmallComponent</item>
+    </style>
+
+    <style name="ThemeOneChipStyle" parent="BaseThemeOneChipStyle">
+        <item name="chipBackgroundColor">@color/theme1_pink_quartz</item>
+        <item name="shapeAppearance">@style/ShapeAppearanceChip.App.SmallComponent</item>
+    </style>
+
+    <style name="ThemeTwoChipStyle" parent="BaseThemeOneChipStyle">
+        <item name="chipBackgroundColor">@color/theme2_light_green</item>
+        <item name="shapeAppearance">@style/ShapeAppearanceChip.App.SmallComponent</item>
+    </style>
+
+    <style name="ThemeThreeChipStyle" parent="BaseThemeOneChipStyle">
+        <item name="chipBackgroundColor">@color/theme3_blue</item>
+        <item name="shapeAppearance">@style/ShapeAppearanceChip.App.SmallComponent</item>
+    </style>
+
+
+    <style name="BaseChipStyle" parent="Widget.MaterialComponents.Chip.Choice">
+        <item name="chipBackgroundColor">@color/theme1_pink_quartz</item>
+    </style>
+
+    <style name="ActionChipStyle" parent="Widget.MaterialComponents.Chip.Action">
+        <item name="chipIcon">@drawable/ic_stat_open_info</item>
+        <item name="chipBackgroundColor">@color/theme1_moderate_pink</item>
+        <item name="android:textAppearance">@style/TextAppearanceSmall</item>
+    </style>
+
+    <!--  Widget.MaterialComponents.Chip.*  -->
+
+
+    <!-- Widget.MaterialComponents.TabLayout  -->
+
+    <style name="BaseTabStyle" parent="Widget.MaterialComponents.TabLayout">
+        <item name="tabRippleColor">@drawable/my_ripple</item>
+        <item name="tabIndicatorAnimationDuration">2500</item>
+    </style>
+
+    <!-- Widget.MaterialComponents.TabLayout  -->
+
+
+    <style name="BaseStyleFloatingActionButton" parent="Widget.MaterialComponents.FloatingActionButton">
         <item name="tint">@color/red_600</item>
     </style>
 
@@ -15,30 +100,13 @@
         <item name="errorTextColor">#034AFF</item>
     </style>
 
-    <style name="MyTabStyle" parent="Widget.MaterialComponents.TabLayout">
-        <item name="tabRippleColor">@drawable/my_ripple</item>
-        <item name="tabIndicatorAnimationDuration">2500</item>
+    <style name="layoutTextInputTheme" parent="Widget.MaterialComponents.TimePicker.Display.TextInputEditText">
+
     </style>
 
-    <style name="MyTextAppearance" parent="TextAppearance.MaterialComponents.Body2">
-        <item name="fontFamily">@font/amethysta</item>
-        <item name="android:textStyle">normal</item>
-        <item name="android:textAllCaps">true</item>
-        <item name="android:textSize">14sp</item>
-        <item name="android:letterSpacing">0.2</item>
-    </style>
-
-    <style name="TextBtnRadioSetting" parent="Widget.MaterialComponents.CompoundButton.RadioButton">
-        <item name="android:textStyle">normal</item>
-        <item name="android:textSize">12sp</item>
-    </style>
-
-    <style name="layoutTextChangeTheme" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
-        <item name="android:textSize">12sp</item>
-    </style>
-
+    <!--    Shape-->
     <!--  FIXME 10%==50%  -->
-    <style name="MySmallShape" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+    <style name="BaseSmallShape" parent="ShapeAppearance.MaterialComponents.SmallComponent">
         <item name="cornerSize">10%</item>
         <item name="cornerFamily">rounded</item>
     </style>
@@ -48,5 +116,9 @@
         <item name="cornerFamily">cut</item>
     </style>
 
+    <style name="ShapeAppearanceChip.App.SmallComponent" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerRadius">2dp</item>
+    </style>    <!--    Shape-->
 
 </resources>

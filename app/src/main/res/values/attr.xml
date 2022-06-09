@@ -3,5 +3,9 @@
     <attr name="colorPrimaryTheme" format="reference"/>
     <attr name="colorSecondaryTheme" format="reference"/>
     <attr name="colorTertiaryTheme" format="reference"/>
+    <attr name="colorAccentTheme" format="reference"/>
     <attr name="myTabLayout" format="reference"/>
+    <attr name="textLayoutChangeTheme" format="reference"/>
+    <attr name="chipStyleTheme" format="reference" />
+    <attr name="colorChipStyleTheme" format="reference"/>
 </resources>
