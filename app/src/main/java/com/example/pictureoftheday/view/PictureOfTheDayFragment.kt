@@ -27,30 +27,17 @@ import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import com.google.android.material.snackbar.Snackbar
 
+const val THEME1 = "Today"
+const val THEME2 = "Yesterday"
+const val THEME3 = "tdby"
 
-class PictureOfTheDayFragment : Fragment(), ChipGroup.OnCheckedStateChangeListener {
+class PictureOfTheDayFragment : Fragment() {
 
     var isMain = true
     private var _binding: FragmentPictureOfTheDayBinding? = null
     private val binding: FragmentPictureOfTheDayBinding
         get() = _binding!!
 
-    override fun onCheckedChanged(group: ChipGroup, checkedIds: MutableList<Int>) {
-        Log.d("@@@", "onClick: что то кликнули")
-/*
-        when (group.) {
-            1 -> {
-                viewModel.sendRequestToday(callBackOnErrorLoad)
-            }
-            2 -> {
-                viewModel.sendRequestYT(callBackOnErrorLoad)
-            }
-            3 -> {
-                viewModel.sendRequestTDBY(callBackOnErrorLoad)
-            }
-        }
-*/
-    }
 
     private val KEY_SP = "sp"
     private val KEY_CURRENT_THEME_LOCAL = "current_theme_local"
@@ -181,14 +168,15 @@ class PictureOfTheDayFragment : Fragment(), ChipGroup.OnCheckedStateChangeListen
 
         binding.chipGroup.setOnCheckedChangeListener { group, position ->
             /* TODO HW*/
-            when (position) {
-                1 -> {
+            /*не могу понять почему при каждой смене темы и возврате во фрагмент меняется позиция чипов*/
+            when (group.findViewById<Chip>(position)?.text.toString()) {
+                THEME1 -> {
                     viewModel.sendRequestToday(callBackOnErrorLoad)
                 }
-                2 -> {
+                THEME2 -> {
                     viewModel.sendRequestYT(callBackOnErrorLoad)
                 }
-                3 -> {
+                THEME3 -> {
                     viewModel.sendRequestTDBY(callBackOnErrorLoad)
                 }
             }

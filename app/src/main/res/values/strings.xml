@@ -7,13 +7,15 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="search_wiki">Найти в Википедии</string>
     <string name="searching_in_wiki">Поищите термин в википедии</string>
-    <string name="app_bar_menu_send">send</string>
-    <string name="app_bar_menu_download">downlaod</string>
-    <string name="today">today</string>
-    <string name="yesterday">yesterday</string>
-    <string name="tdby">tdby</string>
-    <string name="theme_one">тема 1</string>
-    <string name="theme_two">тема 2</string>
-    <string name="theme_three">тема 3</string>
+    <string name="app_bar_menu_send">Отправить</string>
+    <string name="app_bar_menu_download">Скачать</string>
+    <string name="today">Сегодня</string>
+    <string name="yesterday">Вчера</string>
+    <string name="tdby">Позавчера</string>
+    <string name="theme_one">Красная</string>
+    <string name="theme_two">Оранжевая</string>
+    <string name="theme_three">Голубая</string>
     <string name="change_theme">Выбор темы</string>
+    <string name="chip_today">Сегодня</string>
+    <string name="chip_yesterday">Yesterday</string>
 </resources>

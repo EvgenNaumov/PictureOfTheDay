@@ -55,20 +55,19 @@ class SettingsFragment : Fragment(), View.OnClickListener {
 
         binding.tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab?) {
-                when (tab?.position) {
-                    /* TODO HW аналогично основному экрану
-                     when(position){
-                        1->{viewModel.sendRequestToday()}
-                        2->{viewModel.sendRequestYT()}
-                        3->{viewModel.sendRequestTDBY()}
-                    }
-
-                    when(position){
-                        1->{viewModel.sendRequest(date)}
-                        2->{viewModel.sendRequest(date-1)}
-                        3->{viewModel.sendRequest(date-2)}
-                    }*/
-                }
+//                when (tab?.position) {
+//                   1->{ parentActivity.setCurrenyTheme(ThemeOne)
+//                            parentActivity.recreate()}
+//                    2->{
+//                        parentActivity.setCurrenyTheme(ThemeSecond)
+//                        parentActivity.recreate()
+//                    }
+//
+//                    3->{
+//                        parentActivity.setCurrenyTheme(ThemeThree)
+//                        parentActivity.recreate()
+//                    }
+//                }
                 Toast.makeText(requireContext(), "${tab?.position}", Toast.LENGTH_SHORT).show()
             }
 
