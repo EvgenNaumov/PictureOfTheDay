@@ -42,7 +42,7 @@
         <item name="colorAccentTheme">@color/theme1_eggplant</item>
         <item name="android:statusBarColor">@color/theme1_eggplant</item>
 
-        <item name="textAppearanceBody2">@style/TextAppearanceThemeOne</item>
+        <item name="android:textAppearance">@style/TextAppearanceThemeOne</item>
         <item name="chipStyleTheme">@style/ThemeOneChipStyle</item>
     </style>
 
@@ -52,7 +52,7 @@
         <item name="colorTertiaryTheme">@color/theme2_mint</item>
         <item name="colorAccentTheme">@color/theme2_pink</item>
 
-        <item name="textAppearanceBody2">@style/TextAppearanceThemeTwo</item>
+        <item name="android:textAppearance">@style/TextAppearanceThemeTwo</item>
         <item name="chipStyleTheme">@style/ThemeTwoChipStyle</item>
     </style>
 
@@ -62,7 +62,7 @@
         <item name="colorTertiaryTheme">@color/theme3_purple</item>
         <item name="colorAccentTheme">@color/theme3_green</item>
 
-        <item name="textAppearanceBody2">@style/TextAppearanceThemeThree</item>
+        <item name="android:textAppearance">@style/TextAppearanceThemeThree</item>
         <item name="chipStyleTheme">@style/ThemeThreeChipStyle</item>
     </style>
 

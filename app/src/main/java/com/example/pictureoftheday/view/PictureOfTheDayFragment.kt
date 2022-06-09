@@ -169,14 +169,15 @@ class PictureOfTheDayFragment : Fragment() {
         binding.chipGroup.setOnCheckedChangeListener { group, position ->
             /* TODO HW*/
             /*не могу понять почему при каждой смене темы и возврате во фрагмент меняется позиция чипов*/
-            when (group.findViewById<Chip>(position)?.text.toString()) {
-                THEME1 -> {
+            //group.findViewById<Chip>(position)?.text.toString()
+            when (position) {
+                1 -> {
                     viewModel.sendRequestToday(callBackOnErrorLoad)
                 }
-                THEME2 -> {
+                2 -> {
                     viewModel.sendRequestYT(callBackOnErrorLoad)
                 }
-                THEME3 -> {
+                3 -> {
                     viewModel.sendRequestTDBY(callBackOnErrorLoad)
                 }
             }

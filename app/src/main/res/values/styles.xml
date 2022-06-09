@@ -6,7 +6,7 @@
         <item name="fontFamily">@font/amethysta</item>
         <item name="android:textStyle">normal</item>
         <item name="android:textAllCaps">true</item>
-        <item name="android:textSize">14sp</item>
+        <item name="android:textSize">8sp</item>
         <item name="android:letterSpacing">0.2</item>
     </style>
 
@@ -28,10 +28,13 @@
     <style name="TextAppearanceSmall" parent="TextAppearance.MaterialComponents.Body2">
         <item name="fontFamily">@font/brawler</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:textSize">10dp</item>
+        <item name="android:textSize">8dp</item>
     </style>
 
-
+    <style name="TextAppearanceSmallChip" parent="TextAppearance.MaterialComponents.Body2">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">8dp</item>
+    </style>
     <!--    TextAppearance.MaterialComponents.Body2-->
 
 
@@ -39,7 +42,7 @@
 
     <style name="TextBtnRadioSetting" parent="Widget.MaterialComponents.CompoundButton.RadioButton">
         <item name="android:textStyle">normal</item>
-        <item name="android:textSize">12sp</item>
+        <item name="android:textSize">12dp</item>
     </style>
 
     <!--    Widget.MaterialComponents.CompoundButton.RadioButton -->
@@ -48,21 +51,25 @@
     <!--  Widget.MaterialComponents.Chip.*  -->
     <style name="BaseThemeOneChipStyle" parent="Widget.MaterialComponents.Chip.Entry">
         <item name="shapeAppearance">@style/ShapeAppearanceChip.App.SmallComponent</item>
+        <item name="android:textAppearance">@style/TextAppearanceSmall</item>
     </style>
 
     <style name="ThemeOneChipStyle" parent="BaseThemeOneChipStyle">
         <item name="chipBackgroundColor">@color/theme1_pink_quartz</item>
         <item name="shapeAppearance">@style/ShapeAppearanceChip.App.SmallComponent</item>
+
     </style>
 
     <style name="ThemeTwoChipStyle" parent="BaseThemeOneChipStyle">
         <item name="chipBackgroundColor">@color/theme2_light_green</item>
         <item name="shapeAppearance">@style/ShapeAppearanceChip.App.SmallComponent</item>
+
     </style>
 
     <style name="ThemeThreeChipStyle" parent="BaseThemeOneChipStyle">
         <item name="chipBackgroundColor">@color/theme3_blue</item>
         <item name="shapeAppearance">@style/ShapeAppearanceChip.App.SmallComponent</item>
+
     </style>
 
 
