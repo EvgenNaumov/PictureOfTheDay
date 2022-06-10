@@ -50,6 +50,11 @@ class PictureOfTheDayFragment : Fragment() {
         }
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setRetainInstance(true)
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -181,14 +186,6 @@ class PictureOfTheDayFragment : Fragment() {
                     viewModel.sendRequestTDBY(callBackOnErrorLoad)
                 }
             }
-
-/*
-            when(position){
-                1->{viewModel.sendRequest(date)}
-                2->{viewModel.sendRequest(date-1)}
-                3->{viewModel.sendRequest(date-2)}
-            }
-*/
             group.findViewById<Chip>(position)?.let {
                 Log.d("@@@", "${it.text.toString()} $position")
             }
