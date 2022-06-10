@@ -18,4 +18,7 @@
     <string name="change_theme">Выбор темы</string>
     <string name="chip_today">Сегодня</string>
     <string name="chip_yesterday">Yesterday</string>
+    <string name="earth">земля</string>
+    <string name="system">солнце</string>
+    <string name="mars">марс</string>
 </resources>
