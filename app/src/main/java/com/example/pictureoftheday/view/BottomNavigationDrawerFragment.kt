@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.pictureoftheday.R
 import com.example.pictureoftheday.databinding.BottomNavigationLayoutBinding
+import com.example.pictureoftheday.view.navigation.FragmentApi
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 class BottomNavigationDrawerFragment : BottomSheetDialogFragment() {
@@ -30,6 +31,10 @@ class BottomNavigationDrawerFragment : BottomSheetDialogFragment() {
             when(it.itemId){
                 R.id.navigation_one ->{
                     Log.d("@@@","На экран 1")
+                    requireActivity().supportFragmentManager.beginTransaction().replace(R.id.container,FragmentApi(), "FragmentApi" ).apply {
+                        this.commit()
+                        this.addToBackStack("")
+                    }
                 }
                 R.id.navigation_two ->{
                     Log.d("@@@","На экран 2")

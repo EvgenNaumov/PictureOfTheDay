@@ -10,6 +10,7 @@ import android.util.Log
 import android.view.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.core.view.get
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -175,17 +176,21 @@ class PictureOfTheDayFragment : Fragment() {
             /* TODO HW*/
             /*не могу понять почему при каждой смене темы и возврате во фрагмент меняется позиция чипов*/
             //group.findViewById<Chip>(position)?.text.toString()
-            when (position) {
-                1 -> {
+            //group.tag возвращает null
+            val chiptag = group.get(position-1).tag
+            when (chiptag) {
+                "chip1" -> {
                     viewModel.sendRequestToday(callBackOnErrorLoad)
                 }
-                2 -> {
+                "chip2" -> {
                     viewModel.sendRequestYT(callBackOnErrorLoad)
                 }
-                3 -> {
+                "chip3" -> {
                     viewModel.sendRequestTDBY(callBackOnErrorLoad)
                 }
+                else -> {viewModel.sendRequestToday(callBackOnErrorLoad)}
             }
+
             group.findViewById<Chip>(position)?.let {
                 Log.d("@@@", "${it.text.toString()} $position")
             }
