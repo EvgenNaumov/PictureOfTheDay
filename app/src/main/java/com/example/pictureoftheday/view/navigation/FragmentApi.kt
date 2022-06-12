@@ -1,11 +1,15 @@
 package com.example.pictureoftheday.view.navigation
 
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
 import com.example.pictureoftheday.R
 import com.example.pictureoftheday.databinding.FragmentApiBinding
-import com.example.pictureoftheday.view.navigation.viewpager.ViewPagerAdapter
+import com.example.pictureoftheday.view.PictureOfTheEarthFragment
+import com.example.pictureoftheday.view.PictureOfTheDayFragment
+import com.example.pictureoftheday.view.PictureOfTheMarsFragment
+import com.example.pictureoftheday.view.PictureOfTheSystemFragment
 
 class FragmentApi : Fragment() {
 
@@ -26,14 +30,46 @@ class FragmentApi : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.viewPager1.adapter = ViewPagerAdapter(childFragmentManager)
 
-        binding.tabLayout1.setupWithViewPager(binding.viewPager1)
-        binding.tabLayout1.getTabAt(0)?.setIcon(R.drawable.ic_earth)
-        binding.tabLayout1.getTabAt(1)?.setIcon(R.drawable.ic_mars)
-        binding.tabLayout1.getTabAt(2)?.setIcon(R.drawable.ic_system)
+//        choiseFragment(PictureOfTheDayFragment.newInstance())
+
+        binding.bottomNavigationPicture.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.action_bottom_navigation_picture-> {
+                    choiseFragment(PictureOfTheDayFragment.newInstance())
+                    Log.d("@@@", "FragmentApi: action_bottom_navigation_picture")
+                    true
+                }
+                R.id.action_bottom_navigation_earth -> {
+                    choiseFragment(PictureOfTheEarthFragment.newInstance())
+                    Log.d("@@@", "FragmentApi: action_bottom_navigation_earth")
+                    false
+                }
+                R.id.action_bottom_navigation_db_mars -> {
+                    choiseFragment(PictureOfTheMarsFragment.newInstance())
+                    Log.d("@@@", "FragmentApi: action_bottom_navigation_db_mars")
+                    true
+                }
+                R.id.action_bottom_navigation_setup -> {
+                    choiseFragment(PictureOfTheSystemFragment.newInstance())
+                    Log.d("@@@", "FragmentApi: action_bottom_navigation_setup")
+                    true
+                }
+                else -> {
+                    true
+                }
+            }
+        }
 
     }
+
+    private fun choiseFragment(fm:Fragment){
+        childFragmentManager.beginTransaction().replace(R.id.container_api, fm).apply {
+            this.commit()
+            this.addToBackStack("")
+        }
+    }
+
 
     override fun onDestroy() {
         _binding = null

@@ -5,32 +5,31 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools">
 
-
-    <com.google.android.material.chip.ChipGroup
-        android:id="@+id/chipGroup"
-        android:layout_width="wrap_content"
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayout_day"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        app:singleSelection="true">
+        tools:ignore="ExtraText">
 
-        <com.google.android.material.chip.Chip
-            android:tag="chip1"
+        <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/chip_today" />
+            android:layout_height="?actionBarSize"
+            android:tag="one"
+            android:text="@string/today" />
 
-        <com.google.android.material.chip.Chip
-            android:tag="chip2"
+        <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/chip_yesterday" />
+            android:layout_height="?actionBarSize"
+            android:tag="two"
+            android:text="@string/yesterday" />
 
-        <com.google.android.material.chip.Chip
-            android:tag="chip3"
+        <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/chip_dby" />
-    </com.google.android.material.chip.ChipGroup>
+            android:layout_height="?actionBarSize"
+            android:tag="three"
+            android:text="@string/db_yesterday" />
+    </com.google.android.material.tabs.TabLayout>
+
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/input_layout"

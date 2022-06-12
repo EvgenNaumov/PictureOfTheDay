@@ -12,6 +12,7 @@
     <string name="today">Сегодня</string>
     <string name="yesterday">Вчера</string>
     <string name="chip_dby">Позавчера</string>
+    <string name="db_yesterday">Позавчера</string>
     <string name="theme_one">Красная</string>
     <string name="theme_two">Оранжевая</string>
     <string name="theme_three">Голубая</string>
@@ -21,4 +22,5 @@
     <string name="earth">земля</string>
     <string name="system">солнце</string>
     <string name="mars">марс</string>
+    <string name="setup">настройки</string>
 </resources>

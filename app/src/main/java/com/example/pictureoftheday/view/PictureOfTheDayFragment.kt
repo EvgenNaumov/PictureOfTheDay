@@ -1,21 +1,16 @@
 package com.example.pictureoftheday.view
 
-import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import android.net.Uri
 import android.os.Bundle
-import android.security.keystore.KeyNotYetValidException
 import android.util.Log
 import android.view.*
-import androidx.appcompat.app.AppCompatActivity
+import android.widget.Toast
 import androidx.core.content.ContextCompat
-import androidx.core.view.get
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import coil.api.load
-import com.example.pictureoftheday.BuildConfig
 import com.example.pictureoftheday.MainActivity
 import com.example.pictureoftheday.R
 import com.example.pictureoftheday.databinding.FragmentPictureOfTheDayBinding
@@ -24,15 +19,11 @@ import com.example.pictureoftheday.viewmodel.PictureOfTheDayAppState
 import com.example.pictureoftheday.viewmodel.PictureOfTheDayViewModel
 import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.bottomsheet.BottomSheetBehavior
-import com.google.android.material.chip.Chip
-import com.google.android.material.chip.ChipGroup
 import com.google.android.material.snackbar.Snackbar
+import com.google.android.material.tabs.TabLayout
 
-const val THEME1 = "Today"
-const val THEME2 = "Yesterday"
-const val THEME3 = "tdby"
 
-class PictureOfTheDayFragment : Fragment() {
+class PictureOfTheDayFragment: Fragment() {
 
     var isMain = true
     private var _binding: FragmentPictureOfTheDayBinding? = null
@@ -84,9 +75,9 @@ class PictureOfTheDayFragment : Fragment() {
             R.id.app_bar_settings -> {
                 Log.d("@@@", "app_bar_settings")
                 requireActivity().supportFragmentManager.beginTransaction().replace(R.id.container, SettingsFragment.newInstance()) .apply {
-                        this.commit()
-                        this.addToBackStack("")
-                    }
+                    this.commit()
+                    this.addToBackStack("")
+                }
 
 
                 // TODO HW addToBAckstack
@@ -172,29 +163,35 @@ class PictureOfTheDayFragment : Fragment() {
             isMain = !isMain
         }
 
-        binding.chipGroup.setOnCheckedChangeListener { group, position ->
-            /* TODO HW*/
-            /*не могу понять почему при каждой смене темы и возврате во фрагмент меняется позиция чипов*/
-            //group.findViewById<Chip>(position)?.text.toString()
-            //group.tag возвращает null
-            val chiptag = group.get(position-1).tag
-            when (chiptag) {
-                "chip1" -> {
-                    viewModel.sendRequestToday(callBackOnErrorLoad)
+        initTabLayout()
+    }
+
+    private fun initTabLayout() {
+        binding.tabLayoutDay.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+            override fun onTabSelected(tab: TabLayout.Tab?) {
+                when (tab?.position) {
+                    0 -> {
+                        viewModel.sendRequestToday(callBackOnErrorLoad)
+                    }
+                    1 -> {
+                        viewModel.sendRequestYT(callBackOnErrorLoad)
+                    }
+                    2 -> {
+                        viewModel.sendRequestTDBY(callBackOnErrorLoad)
+                    }
+                    else -> {viewModel.sendRequestToday(callBackOnErrorLoad)}
                 }
-                "chip2" -> {
-                    viewModel.sendRequestYT(callBackOnErrorLoad)
-                }
-                "chip3" -> {
-                    viewModel.sendRequestTDBY(callBackOnErrorLoad)
-                }
-                else -> {viewModel.sendRequestToday(callBackOnErrorLoad)}
+                Toast.makeText(requireContext(), "${tab?.position}", Toast.LENGTH_SHORT).show()
             }
 
-            group.findViewById<Chip>(position)?.let {
-                Log.d("@@@", "${it.text.toString()} $position")
+            override fun onTabUnselected(tab: TabLayout.Tab?) {
+                //TODO("Not yet implemented")
             }
-        }
+
+            override fun onTabReselected(tab: TabLayout.Tab?) {
+                //TODO("Not yet implemented")
+            }
+        })
     }
 
 
@@ -244,6 +241,5 @@ class PictureOfTheDayFragment : Fragment() {
         @JvmStatic
         fun newInstance() = PictureOfTheDayFragment()
     }
-
 
 }
