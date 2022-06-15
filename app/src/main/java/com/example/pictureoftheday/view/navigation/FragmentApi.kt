@@ -6,6 +6,7 @@ import android.view.*
 import androidx.fragment.app.Fragment
 import com.example.pictureoftheday.R
 import com.example.pictureoftheday.databinding.FragmentApiBinding
+import com.example.pictureoftheday.settings.SettingsFragment
 import com.example.pictureoftheday.view.PictureOfTheEarthFragment
 import com.example.pictureoftheday.view.PictureOfTheDayFragment
 import com.example.pictureoftheday.view.PictureOfTheMarsFragment
@@ -31,7 +32,8 @@ class FragmentApi : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-//        choiseFragment(PictureOfTheDayFragment.newInstance())
+        choiseFragment(PictureOfTheDayFragment.newInstance())
+
 
         binding.bottomNavigationPicture.setOnItemSelectedListener { item ->
             when (item.itemId) {
@@ -43,15 +45,20 @@ class FragmentApi : Fragment() {
                 R.id.action_bottom_navigation_earth -> {
                     choiseFragment(PictureOfTheEarthFragment.newInstance())
                     Log.d("@@@", "FragmentApi: action_bottom_navigation_earth")
-                    false
+                    true
                 }
                 R.id.action_bottom_navigation_db_mars -> {
                     choiseFragment(PictureOfTheMarsFragment.newInstance())
                     Log.d("@@@", "FragmentApi: action_bottom_navigation_db_mars")
                     true
                 }
-                R.id.action_bottom_navigation_setup -> {
+                R.id.action_bottom_navigation_system -> {
                     choiseFragment(PictureOfTheSystemFragment.newInstance())
+                    Log.d("@@@", "FragmentApi: action_bottom_navigation_db_mars")
+                    true
+                }
+                R.id.action_bottom_navigation_setup -> {
+                    choiseFragment(SettingsFragment.newInstance())
                     Log.d("@@@", "FragmentApi: action_bottom_navigation_setup")
                     true
                 }

@@ -39,7 +39,7 @@ class PictureOfTheSystemViewModel (
             1 -> {
                 val calendar = Calendar.getInstance()
                 val today = calendar.apply { add(Calendar.DAY_OF_MONTH,0) }.time
-                val dateKey = SimpleDateFormat("yyyy-MM-dd").format(today)
+                val dateKey = SimpleDateFormat("yyyy-MM-dd", Locale.US).format(today)
                 pictureOfTheNasaRetrofitImpl.getRetrofit()
                     .getPictureOfTheSystem(BuildConfig.NASA_API_KEY)
                     .enqueue(callback)
@@ -47,7 +47,7 @@ class PictureOfTheSystemViewModel (
             2 -> {
                 val calendar = Calendar.getInstance()
                 val today = calendar.apply { add(Calendar.DAY_OF_MONTH,-1) }.time
-                val dateKey = SimpleDateFormat("yyyy-MM-dd").format(today)
+                val dateKey = SimpleDateFormat("yyyy-MM-dd", Locale.US).format(today)
                 pictureOfTheNasaRetrofitImpl.getRetrofit()
                     .getPictureOfTheSystem(BuildConfig.NASA_API_KEY)
                     .enqueue(callback)
@@ -55,7 +55,7 @@ class PictureOfTheSystemViewModel (
             3 -> {
                 val calendar = Calendar.getInstance()
                 val today = calendar.apply { add(Calendar.DAY_OF_MONTH,-2) }.time
-                val dateKey = SimpleDateFormat("yyyy-MM-dd").format(today)
+                val dateKey = SimpleDateFormat("yyyy-MM-dd", Locale.US).format(today)
                 pictureOfTheNasaRetrofitImpl.getRetrofit()
                     .getPictureOfTheSystem(BuildConfig.NASA_API_KEY)
                     .enqueue(callback)

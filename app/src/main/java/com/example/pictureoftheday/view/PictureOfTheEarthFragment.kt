@@ -54,12 +54,13 @@ class PictureOfTheEarthFragment:Fragment() {
         viewModel.getLiveData().observe(viewLifecycleOwner, Observer {
             renderData(it)
         })
-        viewModel.sendRequest(callBackOnErrorLoad)
+        viewModel.sendRequestToday(callBackOnErrorLoad)
 
         initTabLayout()
     }
 
     private fun initTabLayout() {
+
         binding.tabLayoutEarth.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 when (tab?.position) {

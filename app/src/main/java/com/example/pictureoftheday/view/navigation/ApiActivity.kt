@@ -15,11 +15,11 @@ class ApiActivity: AppCompatActivity() {
         setContentView(binding.root)
         binding.viewPager.adapter = ViewPagerAdapter(supportFragmentManager)
 
-        binding.tabLayout.setupWithViewPager(binding.viewPager)
+        binding.tabLayoutApi.setupWithViewPager(binding.viewPager)
 
-        binding.tabLayout.getTabAt(0)?.setIcon(R.drawable.ic_earth)
-        binding.tabLayout.getTabAt(1)?.setIcon(R.drawable.ic_mars)
-        binding.tabLayout.getTabAt(2)?.setIcon(R.drawable.ic_system)
+        binding.tabLayoutApi.getTabAt(0)?.setIcon(R.drawable.ic_earth)
+        binding.tabLayoutApi.getTabAt(1)?.setIcon(R.drawable.ic_mars)
+        binding.tabLayoutApi.getTabAt(2)?.setIcon(R.drawable.ic_system)
 
         //binding.textOne.setTextColor(resources.getColor(R.color.red))
         // binding.textOne.setTextColor(resources.getColor(R.color.blu))

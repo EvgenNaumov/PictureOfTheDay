@@ -92,7 +92,11 @@ class PictureOfTheSystemFragment: Fragment(){
         when (pictureOfTheSystemAppState) {
             is PictureOfTheSystemAppState.Error -> {
 
-                binding.imageSystem.load(R.drawable.bg_earth)
+//                binding.imageSystem.load(R.drawable.bg_earth)
+                binding.imageSystem.load(R.drawable.ic_stat_no_connect)
+                context?.let {
+                    Snackbar.make(it, binding.mainviewSystem, pictureOfTheSystemAppState.error, Snackbar.LENGTH_SHORT).show()
+                }
             }
             is PictureOfTheSystemAppState.Loading -> {
                 binding.imageSystem.load(R.drawable.bg_earth)

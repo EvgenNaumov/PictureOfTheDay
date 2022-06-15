@@ -44,7 +44,7 @@ class PictureOfTheDayFragment: Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setRetainInstance(true)
+//        setRetainInstance(true)
     }
 
     override fun onCreateView(

@@ -3,7 +3,7 @@
     <item
         android:id="@+id/action_bottom_navigation_picture"
         android:icon="@drawable/ic_baseline_today_24"
-        android:title="@string/earth" />
+        android:title="@string/astronomy" />
     <item
         android:id="@+id/action_bottom_navigation_earth"
         android:icon="@drawable/ic_earth"
