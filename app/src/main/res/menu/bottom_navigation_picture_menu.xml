@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/action_bottom_navigation_picture"
-        android:icon="@drawable/ic_baseline_today_24"
+        android:icon="@drawable/ic_telescope"
         android:title="@string/astronomy" />
     <item
         android:id="@+id/action_bottom_navigation_earth"

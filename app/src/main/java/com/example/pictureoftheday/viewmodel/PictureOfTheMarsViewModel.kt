@@ -41,7 +41,7 @@ class PictureOfTheMarsViewModel(
                 val today = calendar.apply { add(Calendar.DAY_OF_MONTH,0) }.time
                 val dateKey = SimpleDateFormat("yyyy-MM-dd", Locale.US).format(today)
                 pictureOfTheNasaRetrofitImpl.getRetrofit()
-                    .getPictureOfTheMars(BuildConfig.NASA_API_KEY,dateKey,"")
+                    .getPictureOfTheMars(BuildConfig.NASA_API_KEY,100,1,"MAST")
                     .enqueue(callback)
             }
             2 -> {
@@ -49,7 +49,7 @@ class PictureOfTheMarsViewModel(
                 val today = calendar.apply { add(Calendar.DAY_OF_MONTH,-1) }.time
                 val dateKey = SimpleDateFormat("yyyy-MM-dd", Locale.US).format(today)
                 pictureOfTheNasaRetrofitImpl.getRetrofit()
-                    .getPictureOfTheMars(BuildConfig.NASA_API_KEY,dateKey,"")
+                    .getPictureOfTheMars(BuildConfig.NASA_API_KEY,1000,1,"MARDI")
                     .enqueue(callback)
             }
             3 -> {
@@ -57,7 +57,7 @@ class PictureOfTheMarsViewModel(
                 val today = calendar.apply { add(Calendar.DAY_OF_MONTH,-2) }.time
                 val dateKey = SimpleDateFormat("yyyy-MM-dd", Locale.US).format(today)
                 pictureOfTheNasaRetrofitImpl.getRetrofit()
-                    .getPictureOfTheMars(BuildConfig.NASA_API_KEY,dateKey, "")
+                    .getPictureOfTheMars(BuildConfig.NASA_API_KEY,1000,1, "RHAZ")
                     .enqueue(callback)
             }
             else -> {
@@ -65,7 +65,7 @@ class PictureOfTheMarsViewModel(
                 val today = calendar.apply { add(Calendar.DAY_OF_MONTH,0) }.time
                 val dateKey = SimpleDateFormat("yyyy-MM-dd", Locale.US).format(today)
                 pictureOfTheNasaRetrofitImpl.getRetrofit()
-                    .getPictureOfTheMars(BuildConfig.NASA_API_KEY,dateKey,"")
+                    .getPictureOfTheMars(BuildConfig.NASA_API_KEY,1000,1,"FHAZ")
                     .enqueue(callback)
             }
         }

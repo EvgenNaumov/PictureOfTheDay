@@ -7,6 +7,9 @@ import androidx.lifecycle.ViewModel
 import com.example.pictureoftheday.BuildConfig
 import com.example.pictureoftheday.repository.earth.PictureOfTheEarthResponseDate
 import com.example.pictureoftheday.repository.api.PictureOfTheNasaRetrofitImpl
+import com.example.pictureoftheday.repository.earth.PictureOfTheEarthDate
+import com.example.pictureoftheday.repository.earth.PictureOfTheEarthListDateItem
+import com.example.pictureoftheday.repository.earth.PictureOfTheEarthResponseListDate
 import com.example.pictureoftheday.view.PictureOfTheEarthFragment
 import retrofit2.Call
 import retrofit2.Callback
@@ -40,6 +43,7 @@ class PictureOfTheEarthViewModel(
                 val calendar = Calendar.getInstance()
                 val today = calendar.apply { add(Calendar.DAY_OF_MONTH,0) }.time
                 val dateKey = SimpleDateFormat("yyyy-MM-dd").format(today)
+
                 pictureOfTheNasaRetrofitImpl.getRetrofit()
                 .getPictureOfTheEarth(BuildConfig.NASA_API_KEY,dateKey,-95.33,29.78,0.10)
                 .enqueue(callback)
@@ -48,6 +52,7 @@ class PictureOfTheEarthViewModel(
                 val calendar = Calendar.getInstance()
                 val today = calendar.apply { add(Calendar.DAY_OF_MONTH,-1) }.time
                 val dateKey = SimpleDateFormat("yyyy-MM-dd").format(today)
+
                 pictureOfTheNasaRetrofitImpl.getRetrofit()
                     .getPictureOfTheEarth(BuildConfig.NASA_API_KEY,dateKey,-95.33,29.78,0.10)
                     .enqueue(callback)
@@ -56,6 +61,7 @@ class PictureOfTheEarthViewModel(
                 val calendar = Calendar.getInstance()
                 val today = calendar.apply { add(Calendar.DAY_OF_MONTH,-2) }.time
                 val dateKey = SimpleDateFormat("yyyy-MM-dd").format(today)
+
                 pictureOfTheNasaRetrofitImpl.getRetrofit()
                     .getPictureOfTheEarth(BuildConfig.NASA_API_KEY,dateKey,-95.33,29.78,0.10)
                     .enqueue(callback)
@@ -64,6 +70,7 @@ class PictureOfTheEarthViewModel(
                 val calendar = Calendar.getInstance()
                 val today = calendar.apply { add(Calendar.DAY_OF_MONTH,0) }.time
                 val dateKey = SimpleDateFormat("yyyy-MM-dd").format(today)
+
                 pictureOfTheNasaRetrofitImpl.getRetrofit()
                     .getPictureOfTheEarth(BuildConfig.NASA_API_KEY,dateKey,-95.33,29.78,0.10)
                     .enqueue(callback)
@@ -106,4 +113,14 @@ class PictureOfTheEarthViewModel(
         sendRequest(callbachFragment, 3)
     }
 
+    interface CallbackListPicture{
+        fun getListPicture(pictureOfTheEarthDate: PictureOfTheEarthDate)
+    }
+
+    var pictureListDate: PictureOfTheEarthDate = PictureOfTheEarthDate("",0.0,0.0)
+    private val callbackListPicture = object :CallbackListPicture{
+        override fun getListPicture(pictureOfTheEarthListDate: PictureOfTheEarthDate) {
+            pictureListDate =  pictureOfTheEarthListDate
+        }
+    }
 }

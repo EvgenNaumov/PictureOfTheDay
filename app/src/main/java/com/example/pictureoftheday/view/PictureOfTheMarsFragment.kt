@@ -1,5 +1,6 @@
 package com.example.pictureoftheday.view
 
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,12 +10,14 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import coil.api.load
+import coil.transform.CircleCropTransformation
 import com.example.pictureoftheday.R
 import com.example.pictureoftheday.databinding.FragmentPictureOfTheMarsBinding
 import com.example.pictureoftheday.viewmodel.PictureOfTheMarsAppState
 import com.example.pictureoftheday.viewmodel.PictureOfTheMarsViewModel
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayout
+import java.time.Duration
 
 class PictureOfTheMarsFragment : Fragment() {
     private var _binding: FragmentPictureOfTheMarsBinding? = null
@@ -41,12 +44,16 @@ class PictureOfTheMarsFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentPictureOfTheMarsBinding.inflate(inflater, container,false)
-       return binding.root
+        _binding = FragmentPictureOfTheMarsBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        if (savedInstanceState==null){
+            binding.imageMars.load(R.drawable.bg_mars)
+        }
 
         viewModel.getLiveData().observe(viewLifecycleOwner, Observer {
             renderData(it)
@@ -69,7 +76,9 @@ class PictureOfTheMarsFragment : Fragment() {
                     2 -> {
                         viewModel.sendRequestTDBY(callBackOnErrorLoad)
                     }
-                    else -> {viewModel.sendRequestToday(callBackOnErrorLoad)}
+                    else -> {
+                        viewModel.sendRequestToday(callBackOnErrorLoad)
+                    }
                 }
                 Toast.makeText(requireContext(), "${tab?.position}", Toast.LENGTH_SHORT).show()
             }
@@ -89,19 +98,33 @@ class PictureOfTheMarsFragment : Fragment() {
         when (pictureOfTheMarsAppState) {
             is PictureOfTheMarsAppState.Error -> {
 
-                binding.imageMars.load(R.drawable.bg_earth)
+                binding.imageMars.load(R.drawable.bg_mars)
             }
             is PictureOfTheMarsAppState.Loading -> {
-                binding.imageMars.load(R.drawable.bg_earth)
+                binding.imageMars.load(R.drawable.bg_mars)
             }
             is PictureOfTheMarsAppState.Success -> {
                 if (pictureOfTheMarsAppState.pictureOfTheMarsResponseData.photos.isNotEmpty()) {
 
-                    binding.imageMars.load(pictureOfTheMarsAppState.pictureOfTheMarsResponseData.photos[0].imgSrc){
-                        placeholder(R.drawable.bg_earth)
+
+                    binding.imageMars.load(pictureOfTheMarsAppState.pictureOfTheMarsResponseData.photos[0].imgSrc) {
+                        transformations(CircleCropTransformation())
+                        placeholder(R.drawable.bg_mars)
                         error(R.drawable.ic_stat_no_connect)
                     }
+
+
+                } else {
+                    binding.imageMars.load(R.drawable.bg_mars)
+                    context?.let {
+                        Snackbar.make(
+                            requireView(),
+                            "По вашему запросу данные отсутствуют",
+                            Snackbar.LENGTH_SHORT
+                        ).show()
+                    }
                 }
+
             }
         }
     }
