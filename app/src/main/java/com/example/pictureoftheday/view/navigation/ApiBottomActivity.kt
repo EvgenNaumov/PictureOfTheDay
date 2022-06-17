@@ -4,6 +4,8 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.pictureoftheday.R
 import com.example.pictureoftheday.databinding.ActivityApiBottomBinding
+import com.example.pictureoftheday.settings.SettingsFragment
+import com.example.pictureoftheday.view.PictureOfTheDayFragment
 import com.google.android.material.badge.BadgeDrawable
 
 class ApiBottomActivity : AppCompatActivity() {
@@ -14,6 +16,11 @@ class ApiBottomActivity : AppCompatActivity() {
         setContentView(binding.root)
         binding.bottomNavigation.setOnItemSelectedListener { item ->
             when (item.itemId) {
+                R.id.action_bottom_navigation_picture -> {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.container, PictureOfTheDayFragment.newInstance()).commit()
+                    true
+                }
                 R.id.action_bottom_navigation_earth -> {
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.container, EarthFragment.newInstance()).commit()
@@ -27,6 +34,11 @@ class ApiBottomActivity : AppCompatActivity() {
                 R.id.action_bottom_navigation_mars -> {
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.container, MarsFragment.newInstance()).commit()
+                    true
+                }
+                R.id.action_bottom_navigation_setup -> {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.container, SettingsFragment.newInstance()).commit()
                     true
                 }
                 else -> {

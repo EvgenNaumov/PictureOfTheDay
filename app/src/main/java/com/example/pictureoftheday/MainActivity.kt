@@ -3,7 +3,7 @@ package com.example.pictureoftheday
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.pictureoftheday.view.PictureOfTheDayFragment
+import com.example.pictureoftheday.view.navigation.FragmentApi
 
 
 class MainActivity : AppCompatActivity() {
@@ -14,7 +14,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         if(savedInstanceState==null){
             supportFragmentManager.beginTransaction().replace(R.id.container,
-                PictureOfTheDayFragment.newInstance()).commit()
+                FragmentApi.newInstance()).commit()
         }
     }
 

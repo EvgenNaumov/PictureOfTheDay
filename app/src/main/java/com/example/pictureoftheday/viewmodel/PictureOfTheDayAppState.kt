@@ -1,6 +1,6 @@
 package com.example.pictureoftheday.viewmodel
 
-import com.example.pictureoftheday.repository.PictureOfTheDayResponseDate
+import com.example.pictureoftheday.repository.day.PictureOfTheDayResponseDate
 
 sealed class PictureOfTheDayAppState{
     data class Success(val pictureOfTheDayResponseData: PictureOfTheDayResponseDate):PictureOfTheDayAppState()

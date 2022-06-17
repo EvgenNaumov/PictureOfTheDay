@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="constraintLayout_marginTop">12dp</dimen>
+    <dimen name="constraintLayout_marginTop">6dp</dimen>
     <dimen name="constraintLayout_paddingstart">10dp</dimen>
     <dimen name="cConstraintLayout_paddingend">10dp</dimen>
 </resources>

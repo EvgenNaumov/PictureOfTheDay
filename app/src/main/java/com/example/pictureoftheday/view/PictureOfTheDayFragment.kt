@@ -1,38 +1,30 @@
 package com.example.pictureoftheday.view
 
-import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import android.net.Uri
 import android.os.Bundle
-import android.security.keystore.KeyNotYetValidException
 import android.util.Log
 import android.view.*
-import androidx.appcompat.app.AppCompatActivity
+import android.widget.Toast
 import androidx.core.content.ContextCompat
-import androidx.core.view.get
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import coil.api.load
-import com.example.pictureoftheday.BuildConfig
+import coil.load
 import com.example.pictureoftheday.MainActivity
 import com.example.pictureoftheday.R
 import com.example.pictureoftheday.databinding.FragmentPictureOfTheDayBinding
+import com.example.pictureoftheday.repository.day.PictureOfTheDayResponseDate
 import com.example.pictureoftheday.settings.SettingsFragment
 import com.example.pictureoftheday.viewmodel.PictureOfTheDayAppState
 import com.example.pictureoftheday.viewmodel.PictureOfTheDayViewModel
 import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.bottomsheet.BottomSheetBehavior
-import com.google.android.material.chip.Chip
-import com.google.android.material.chip.ChipGroup
 import com.google.android.material.snackbar.Snackbar
+import com.google.android.material.tabs.TabLayout
 
-const val THEME1 = "Today"
-const val THEME2 = "Yesterday"
-const val THEME3 = "tdby"
 
-class PictureOfTheDayFragment : Fragment() {
+class PictureOfTheDayFragment: Fragment() {
 
     var isMain = true
     private var _binding: FragmentPictureOfTheDayBinding? = null
@@ -53,7 +45,7 @@ class PictureOfTheDayFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setRetainInstance(true)
+//        setRetainInstance(true)
     }
 
     override fun onCreateView(
@@ -84,9 +76,9 @@ class PictureOfTheDayFragment : Fragment() {
             R.id.app_bar_settings -> {
                 Log.d("@@@", "app_bar_settings")
                 requireActivity().supportFragmentManager.beginTransaction().replace(R.id.container, SettingsFragment.newInstance()) .apply {
-                        this.commit()
-                        this.addToBackStack("")
-                    }
+                    this.commit()
+                    this.addToBackStack("")
+                }
 
 
                 // TODO HW addToBAckstack
@@ -172,29 +164,35 @@ class PictureOfTheDayFragment : Fragment() {
             isMain = !isMain
         }
 
-        binding.chipGroup.setOnCheckedChangeListener { group, position ->
-            /* TODO HW*/
-            /*не могу понять почему при каждой смене темы и возврате во фрагмент меняется позиция чипов*/
-            //group.findViewById<Chip>(position)?.text.toString()
-            //group.tag возвращает null
-            val chiptag = group.get(position-1).tag
-            when (chiptag) {
-                "chip1" -> {
-                    viewModel.sendRequestToday(callBackOnErrorLoad)
+        initTabLayout()
+    }
+
+    private fun initTabLayout() {
+        binding.tabLayoutDay.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+            override fun onTabSelected(tab: TabLayout.Tab?) {
+                when (tab?.position) {
+                    0 -> {
+                        viewModel.sendRequestToday(callBackOnErrorLoad)
+                    }
+                    1 -> {
+                        viewModel.sendRequestYT(callBackOnErrorLoad)
+                    }
+                    2 -> {
+                        viewModel.sendRequestTDBY(callBackOnErrorLoad)
+                    }
+                    else -> {viewModel.sendRequestToday(callBackOnErrorLoad)}
                 }
-                "chip2" -> {
-                    viewModel.sendRequestYT(callBackOnErrorLoad)
-                }
-                "chip3" -> {
-                    viewModel.sendRequestTDBY(callBackOnErrorLoad)
-                }
-                else -> {viewModel.sendRequestToday(callBackOnErrorLoad)}
+                Toast.makeText(requireContext(), "${tab?.position}", Toast.LENGTH_SHORT).show()
             }
 
-            group.findViewById<Chip>(position)?.let {
-                Log.d("@@@", "${it.text.toString()} $position")
+            override fun onTabUnselected(tab: TabLayout.Tab?) {
+                //TODO("Not yet implemented")
             }
-        }
+
+            override fun onTabReselected(tab: TabLayout.Tab?) {
+                //TODO("Not yet implemented")
+            }
+        })
     }
 
 
@@ -213,11 +211,13 @@ class PictureOfTheDayFragment : Fragment() {
                 binding.loadingLayout.visibility = View.VISIBLE
             }
             is PictureOfTheDayAppState.Success -> {
-                binding.imageView.load(pictureOfTheDayAppState.pictureOfTheDayResponseData.url) {
-                    // TODO HW скрасить ожидание картинки
-                    placeholder(R.drawable.ic_stat_rocket)
-                    error(R.drawable.ic_stat_no_connect)
-                }
+//                binding.imageView.load(pictureOfTheDayAppState.pictureOfTheDayResponseData.url) {
+//                    // TODO HW скрасить ожидание картинки
+//                    placeholder(R.drawable.ic_stat_rocket)
+//                    error(R.drawable.ic_stat_no_connect)
+//                }
+
+                setData(pictureOfTheDayAppState.pictureOfTheDayResponseData)
                 binding.imageView.visibility = View.VISIBLE
                 binding.loadingLayout.visibility = View.GONE
 
@@ -235,6 +235,30 @@ class PictureOfTheDayFragment : Fragment() {
         fun onError(messageError: String)
     }
 
+    private fun setData(data: PictureOfTheDayResponseDate)  {
+    val url = data.hdurl
+    if (url.isNullOrEmpty()) {
+        val videoUrl = data.url
+        videoUrl?.let { showAVideoUrl(it) }
+    } else {
+        binding.imageView.load(url)
+    }
+}
+
+private fun showAVideoUrl(videoUrl: String) = with(binding) {
+    binding.imageView.visibility = android.view.View.GONE
+    videoOfTheDay.visibility = android.view.View.VISIBLE
+    videoOfTheDay.text = "Сегодня у нас без картинки дня, но есть  видео дня! " +
+            "${videoUrl.toString()} \n кликни >ЗДЕСЬ< чтобы открыть в новом окне"
+    videoOfTheDay.setOnClickListener {
+        val i = Intent(android.content.Intent.ACTION_VIEW).apply {
+            data = android.net.Uri.parse(videoUrl)
+        }
+        startActivity(i)
+    }
+}
+
+
     override fun onDestroy() {
         _binding = null
         super.onDestroy()
@@ -244,6 +268,5 @@ class PictureOfTheDayFragment : Fragment() {
         @JvmStatic
         fun newInstance() = PictureOfTheDayFragment()
     }
-
 
 }

@@ -53,32 +53,6 @@ class SettingsFragment : Fragment(), View.OnClickListener {
             3->binding.radioGroup.check(R.id.button_theme_three)
         }
 
-        binding.tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
-            override fun onTabSelected(tab: TabLayout.Tab?) {
-//                when (tab?.position) {
-//                   1->{ parentActivity.setCurrenyTheme(ThemeOne)
-//                            parentActivity.recreate()}
-//                    2->{
-//                        parentActivity.setCurrenyTheme(ThemeSecond)
-//                        parentActivity.recreate()
-//                    }
-//
-//                    3->{
-//                        parentActivity.setCurrenyTheme(ThemeThree)
-//                        parentActivity.recreate()
-//                    }
-//                }
-                Toast.makeText(requireContext(), "${tab?.position}", Toast.LENGTH_SHORT).show()
-            }
-
-            override fun onTabUnselected(tab: TabLayout.Tab?) {
-                //TODO("Not yet implemented")
-            }
-
-            override fun onTabReselected(tab: TabLayout.Tab?) {
-                //TODO("Not yet implemented")
-            }
-        })
     }
 
     override fun onClick(v: View) {
@@ -97,7 +71,6 @@ class SettingsFragment : Fragment(), View.OnClickListener {
             }
 
         }
-
     }
 
     override fun onDestroy() {

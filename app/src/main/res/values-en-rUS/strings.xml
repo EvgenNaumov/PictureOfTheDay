@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">PictureOfTheDay</string>
+    <string name="settings">Setup</string>
+    <string name="search_wiki">search wiki</string>
+    <string name="app_bar_menu_send">Send</string>
+    <string name="app_bar_menu_download">Load</string>
+    <string name="today">Today</string>
+    <string name="yesterday">Yesterday</string>
+    <string name="chip_dby">DBYesterday</string>
+    <string name="db_yesterday">DBYesterday</string>
+    <string name="theme_one">Red</string>
+    <string name="theme_two">Orange</string>
+    <string name="theme_three">Blue</string>
+    <string name="change_theme">Choise teme</string>
+    <string name="chip_today">Today</string>
+    <string name="chip_yesterday">Yesterday</string>
+    <string name="earth">Earth</string>
+    <string name="system">Solar</string>
+    <string name="mars">Mars</string>
+    <string name="searching_in_wiki">search wiki</string>
+    <string name="setup">setup</string>
+    <string name="astronomy">astronomy</string>
+    <string name="favorite">Main</string>
+</resources>

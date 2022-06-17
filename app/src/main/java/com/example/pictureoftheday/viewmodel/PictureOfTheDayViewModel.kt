@@ -5,17 +5,13 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.pictureoftheday.BuildConfig
-import com.example.pictureoftheday.repository.ErrorLoading
-import com.example.pictureoftheday.repository.PictureOfTheDayResponseDate
-import com.example.pictureoftheday.repository.PictureOfTheDayRetrofitImpl
-import com.example.pictureoftheday.repository.PictureOfTheNasaRetrofitImpl
+import com.example.pictureoftheday.repository.day.PictureOfTheDayResponseDate
+import com.example.pictureoftheday.repository.api.PictureOfTheDayRetrofitImpl
+import com.example.pictureoftheday.repository.api.PictureOfTheNasaRetrofitImpl
 import com.example.pictureoftheday.view.PictureOfTheDayFragment
-import com.google.android.material.snackbar.Snackbar
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.Retrofit
-import java.lang.Error
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -42,7 +38,7 @@ class PictureOfTheDayViewModel(
             return
         }
         when (selectionDate) {
-            1 -> pictureOfTheDayRetrofitImpl.getRetrofit()
+            1 -> pictureOfTheNasaRetrofitImpl.getRetrofit()
                 .getPictureOfTheDay(BuildConfig.NASA_API_KEY)
                 .enqueue(callback)
             2 -> {
@@ -114,6 +110,5 @@ class PictureOfTheDayViewModel(
     fun sendRequestTDBY(callbachFragment: PictureOfTheDayFragment.CallbackFragment) {
         sendRequest(callbachFragment, 3)
     }
-
 
 }

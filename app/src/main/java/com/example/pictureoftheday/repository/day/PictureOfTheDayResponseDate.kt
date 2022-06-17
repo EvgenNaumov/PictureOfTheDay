@@ -1,4 +1,4 @@
-package com.example.pictureoftheday.repository
+package com.example.pictureoftheday.repository.day
 
 import com.google.gson.annotations.SerializedName
 
@@ -10,5 +10,7 @@ data class PictureOfTheDayResponseDate(
     @SerializedName("service_version")
     val serviceVersion: String,
     val title: String,
-    val url: String
+    val url: String,
+    @SerializedName("hdurl")
+    val hdurl: String?
 )
