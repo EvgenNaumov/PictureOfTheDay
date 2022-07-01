@@ -94,19 +94,27 @@ class PictureOfTheSystemFragment: Fragment(){
         when (pictureOfTheSystemAppState) {
             is PictureOfTheSystemAppState.Error -> {
 
-//                binding.imageSystem.load(R.drawable.bg_earth)
+                binding.textsystem.visibility = View.GONE
+                binding.imageSystem.visibility = View.VISIBLE
                 binding.imageSystem.load(R.drawable.ic_stat_no_connect)
                 context?.let {
                     Snackbar.make(it, binding.mainviewSystem, pictureOfTheSystemAppState.error, Snackbar.LENGTH_SHORT).show()
                 }
             }
             is PictureOfTheSystemAppState.Loading -> {
-                binding.imageSystem.load(R.drawable.bg_earth)
+                binding.imageSystem.load(R.drawable.bg_system)
             }
             is PictureOfTheSystemAppState.Success -> {
-                binding.imageSystem.visibility =View.GONE
-                binding.textsystem.visibility = View.VISIBLE
-                binding.textsystem.text = pictureOfTheSystemAppState.pictureOfTheSystemsResponseData.toString()
+                if (pictureOfTheSystemAppState.pictureOfTheSystemsResponseData.isNotEmpty()) {
+                    binding.imageSystem.visibility = View.GONE
+                    binding.textsystem.visibility = View.VISIBLE
+                    binding.imageSystem.load(pictureOfTheSystemAppState.pictureOfTheSystemsResponseData[0].link){
+                        placeholder(R.drawable.bg_system)
+                        error(R.drawable.ic_stat_no_connect)
+                    }
+                    binding.textsystem.text =
+                        pictureOfTheSystemAppState.pictureOfTheSystemsResponseData[0].link.toString()
+                }
 //                binding.imageSystem.load(pictureOfTheSystemAppState.pictureOfTheSystemsResponseData.url){
 //
 //                    placeholder(R.drawable.bg_earth)

@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name" translatable="false">PictureOfTheDay</string>
     <string name="photo_of_the_day_stub" translatable="false">Photo of the day</string>
+    <string name="photo_of_the_mars_stub" translatable="false">Photo of the mars</string>
+    <string name="photo_of_the_earth_stub" translatable="false">Photo of the earth</string>
+    <string name="photo_of_the_system_stub" translatable="false">Photo of the system</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="favorite">Главный</string>
     <string name="settings">Настройки</string>

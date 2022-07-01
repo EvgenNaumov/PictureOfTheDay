@@ -13,7 +13,7 @@ import androidx.lifecycle.ViewModelProvider
 import coil.load
 import com.example.pictureoftheday.MainActivity
 import com.example.pictureoftheday.R
-import com.example.pictureoftheday.databinding.FragmentPictureOfTheDayBinding
+import com.example.pictureoftheday.databinding.FragmentPictureOfTheDayMainBinding
 import com.example.pictureoftheday.repository.day.PictureOfTheDayResponseDate
 import com.example.pictureoftheday.settings.SettingsFragment
 import com.example.pictureoftheday.viewmodel.PictureOfTheDayAppState
@@ -27,8 +27,8 @@ import com.google.android.material.tabs.TabLayout
 class PictureOfTheDayFragment: Fragment() {
 
     var isMain = true
-    private var _binding: FragmentPictureOfTheDayBinding? = null
-    private val binding: FragmentPictureOfTheDayBinding
+    private var _binding: FragmentPictureOfTheDayMainBinding? = null
+    private val binding: FragmentPictureOfTheDayMainBinding
         get() = _binding!!
 
 
@@ -38,7 +38,7 @@ class PictureOfTheDayFragment: Fragment() {
     private var callBackOnErrorLoad = object : CallbackFragment {
         override fun onError(messageError: String) {
             context?.let {
-                Snackbar.make(it, binding.main, messageError, Snackbar.LENGTH_SHORT).show()
+                Snackbar.make(it, binding.mainStart, messageError, Snackbar.LENGTH_SHORT).show()
             }
         }
     }
@@ -54,7 +54,7 @@ class PictureOfTheDayFragment: Fragment() {
     ): View? {
 
         // Inflate the layout for this fragment
-        _binding = FragmentPictureOfTheDayBinding.inflate(inflater, container, false)
+        _binding = FragmentPictureOfTheDayMainBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -108,7 +108,7 @@ class PictureOfTheDayFragment: Fragment() {
             })
         }
 
-        val bottomSheetBehavior = BottomSheetBehavior.from(binding.lifeHack.bottomSheetContainer)
+        val bottomSheetBehavior = BottomSheetBehavior.from(binding.lifeHackMain.bottomSheetContainer)
         bottomSheetBehavior.isFitToContents = false
         bottomSheetBehavior.state = BottomSheetBehavior.STATE_HALF_EXPANDED
         bottomSheetBehavior.addBottomSheetCallback(object :
@@ -173,12 +173,15 @@ class PictureOfTheDayFragment: Fragment() {
                 when (tab?.position) {
                     0 -> {
                         viewModel.sendRequestToday(callBackOnErrorLoad)
+                        binding.mainStart.transitionToEnd()
                     }
                     1 -> {
                         viewModel.sendRequestYT(callBackOnErrorLoad)
+                        binding.mainStart.transitionToEnd()
                     }
                     2 -> {
                         viewModel.sendRequestTDBY(callBackOnErrorLoad)
+                        binding.mainStart.transitionToEnd()
                     }
                     else -> {viewModel.sendRequestToday(callBackOnErrorLoad)}
                 }
@@ -204,7 +207,7 @@ class PictureOfTheDayFragment: Fragment() {
                 binding.imageView.visibility = View.VISIBLE
                 binding.loadingLayout.visibility = View.GONE
 
-                binding.lifeHack.explanation.text = pictureOfTheDayAppState.error
+                binding.lifeHackMain.explanation.text = pictureOfTheDayAppState.error
             }
             is PictureOfTheDayAppState.Loading -> {
                 binding.imageView.visibility = View.GONE
@@ -221,9 +224,9 @@ class PictureOfTheDayFragment: Fragment() {
                 binding.imageView.visibility = View.VISIBLE
                 binding.loadingLayout.visibility = View.GONE
 
-                binding.lifeHack.title.text =
+                binding.lifeHackMain.title.text =
                     pictureOfTheDayAppState.pictureOfTheDayResponseData.title
-                binding.lifeHack.explanation.text =
+                binding.lifeHackMain.explanation.text =
                     pictureOfTheDayAppState.pictureOfTheDayResponseData.explanation
 
 
@@ -236,16 +239,17 @@ class PictureOfTheDayFragment: Fragment() {
     }
 
     private fun setData(data: PictureOfTheDayResponseDate)  {
-    val url = data.hdurl
-    if (url.isNullOrEmpty()) {
-        val videoUrl = data.url
-        videoUrl?.let { showAVideoUrl(it) }
+    val mediaType = data.mediaType
+    if (mediaType=="image") {
+        binding.imageView.load(data.url)
     } else {
-        binding.imageView.load(url)
+        val videoUrl = data.hdurl
+        if (videoUrl!=null){
+        showAVideoUrl(videoUrl)}
     }
 }
 
-private fun showAVideoUrl(videoUrl: String) = with(binding) {
+private fun showAVideoUrl(videoUrl: String?) = with(binding) {
     binding.imageView.visibility = android.view.View.GONE
     videoOfTheDay.visibility = android.view.View.VISIBLE
     videoOfTheDay.text = "Сегодня у нас без картинки дня, но есть  видео дня! " +

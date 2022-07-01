@@ -32,14 +32,24 @@
             android:text="@string/db_yesterday" />
     </com.google.android.material.tabs.TabLayout>
 
-    <androidx.appcompat.widget.AppCompatImageView
+    <com.example.pictureoftheday.utils.EquilateralImageView
         android:id="@+id/image_mars"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:background="@color/white"
-        android:scaleType="fitCenter" />
+        android:contentDescription="@string/photo_of_the_mars_stub"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/input_layout"
+        app:srcCompat="@drawable/ic_no_photo_vector" />
 
-
+<TextView
+    android:id="@+id/img_src"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="4dp"
+    />
 
 </LinearLayout>

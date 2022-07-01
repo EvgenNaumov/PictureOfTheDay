@@ -5,11 +5,12 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools">
 
-
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout_day"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="4dp"
         tools:ignore="ExtraText">
 
         <com.google.android.material.tabs.TabItem
@@ -31,31 +32,32 @@
             android:text="@string/db_yesterday" />
     </com.google.android.material.tabs.TabLayout>
 
-        <androidx.constraintlayout.motion.widget.MotionLayout
-            android:id="@+id/main_end"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/constraintLayout_marginTop"
-            android:paddingStart="@dimen/constraintLayout_paddingstart"
-            android:paddingEnd="@dimen/cConstraintLayout_paddingend"
-            app:layoutDescription="@xml/fragment_picture_of_the_day_scene">
+    <androidx.constraintlayout.motion.widget.MotionLayout
+        android:id="@+id/motion_wiki"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/constraintLayout_marginTop"
+        android:paddingStart="@dimen/constraintLayout_paddingstart"
+        app:layout_constraintTop_toTopOf="parent"
+        android:paddingEnd="@dimen/cConstraintLayout_paddingend"
+        app:layoutDescription="@xml/fragment_picture_of_the_day_scene">
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/wiki_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:visibility="gone"
-                app:layout_constraintBottom_toBottomOf="@id/input_layout"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/input_layout"
-                app:srcCompat="@drawable/ic_wikipedia"/>
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/wiki_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@id/input_layout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/input_layout"
+            app:srcCompat="@drawable/ic_wikipedia">
+        </androidx.appcompat.widget.AppCompatImageView>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/input_layout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
             app:counterEnabled="true"
             app:counterMaxLength="20"
             app:endIconCheckable="true"
@@ -63,9 +65,7 @@
             app:endIconMode="custom"
             app:helperText=""
             app:layout_constraintBottom_toTopOf="@id/image_view"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            >
+            app:layout_constraintStart_toEndOf="parent">
 
 
             <com.google.android.material.textfield.TextInputEditText
@@ -75,18 +75,29 @@
                 android:inputType="text"/>
         </com.google.android.material.textfield.TextInputLayout>
 
-            <com.example.pictureoftheday.utils.EquilateralImageView
-                android:id="@+id/image_view"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:contentDescription="@string/photo_of_the_day_stub"
-                android:scaleType="fitXY"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_no_photo_vector" />
+    </androidx.constraintlayout.motion.widget.MotionLayout>
+
+
+    <androidx.constraintlayout.motion.widget.MotionLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/image_start"
+        app:layoutDescription="@xml/motion_image"
+        >
+
+
+        <com.example.pictureoftheday.utils.EquilateralImageView
+            android:id="@+id/image_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:contentDescription="@string/photo_of_the_day_stub"
+            android:scaleType="fitXY"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_no_photo_vector" />
 
         <TextView
             android:id="@+id/videoOfTheDay"
@@ -100,7 +111,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/image_view"
             android:visibility="gone"
-
             tools:ignore="MissingConstraints" />
 
         <FrameLayout
@@ -123,10 +133,11 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center" />
         </FrameLayout>
-        </androidx.constraintlayout.motion.widget.MotionLayout>
+
+    </androidx.constraintlayout.motion.widget.MotionLayout>
 
     <include
-        android:id="@+id/lifeHack"
+        android:id="@+id/lifeHack_main"
         layout="@layout/bottom_sheet_layout" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton

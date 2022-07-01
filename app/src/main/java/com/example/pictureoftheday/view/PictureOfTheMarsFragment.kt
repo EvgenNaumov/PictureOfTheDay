@@ -107,17 +107,19 @@ class PictureOfTheMarsFragment : Fragment() {
                 if (pictureOfTheMarsAppState.pictureOfTheMarsResponseData.photos.isNotEmpty()) {
                     val randomphoto = Random(pictureOfTheMarsAppState.pictureOfTheMarsResponseData.photos.size-1).nextInt(pictureOfTheMarsAppState.pictureOfTheMarsResponseData.photos.size-1)
                     val url = pictureOfTheMarsAppState.pictureOfTheMarsResponseData.photos[randomphoto].imgSrc
-//                    binding.imageMars.load(url)
-//                    {
-//                        transformations(CircleCropTransformation())
-//                        placeholder(R.drawable.bg_mars)
-//                        error(R.drawable.ic_stat_no_connect)
-//                    }
+                        //.replace("http","https",true)
+                    binding.imageMars.load(url)
+                    {
+                        transformations(CircleCropTransformation())
+                        placeholder(R.drawable.bg_mars)
+                        error(R.drawable.ic_stat_no_connect)
+                    }
 
-                    Glide.with(requireContext())
-                        .load(url)
-                        .into(binding.imageMars)
+//                    Glide.with(requireContext())
+//                        .load(url)
+//                        .into(binding.imageMars)
 
+                binding.imgSrc.text = pictureOfTheMarsAppState.pictureOfTheMarsResponseData.photos[randomphoto].imgSrc.toString()
 
 
                 } else {
