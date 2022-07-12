@@ -6,38 +6,33 @@
         app:constraintSetStart="@id/start_image"
         app:constraintSetEnd="@id/end_image"
         app:duration="6000">
-        <OnClick app:targetId="@+id/tabLayout_day"/>
+        <OnClick app:targetId="@+id/tabLayout_mars"/>
     </Transition>
 
     <ConstraintSet android:id="@+id/start_image">
         <Constraint
-            android:id="@+id/image_view"
+            android:id="@+id/image_mars_m"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_gravity="center"
-            android:contentDescription="@string/photo_of_the_day_stub"
+            android:contentDescription="@string/photo_of_the_mars_stub"
             android:scaleType="fitXY"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/mars_image_m"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/mars_image_m"
             app:srcCompat="@drawable/ic_no_photo_vector"
             />
     </ConstraintSet>
 
     <ConstraintSet android:id="@+id/end_image">
         <Constraint
-            android:id="@+id/image_view"
+            android:id="@+id/image_mars_m"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:contentDescription="@string/photo_of_the_day_stub"
+            android:layout_height="0dp"
+            android:contentDescription="@string/photo_of_the_mars_stub"
             android:scaleType="fitXY"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/mars_image_m"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_no_photo_vector"
-            />
+            app:layout_constraintTop_toTopOf="@+id/mars_image_m"
+            app:srcCompat="@drawable/ic_no_photo_vector" />
     </ConstraintSet>
 </MotionScene>

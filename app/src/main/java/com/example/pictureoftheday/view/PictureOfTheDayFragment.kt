@@ -173,15 +173,12 @@ class PictureOfTheDayFragment: Fragment() {
                 when (tab?.position) {
                     0 -> {
                         viewModel.sendRequestToday(callBackOnErrorLoad)
-                        binding.mainStart.transitionToEnd()
                     }
                     1 -> {
                         viewModel.sendRequestYT(callBackOnErrorLoad)
-                        binding.mainStart.transitionToEnd()
                     }
                     2 -> {
                         viewModel.sendRequestTDBY(callBackOnErrorLoad)
-                        binding.mainStart.transitionToEnd()
                     }
                     else -> {viewModel.sendRequestToday(callBackOnErrorLoad)}
                 }
